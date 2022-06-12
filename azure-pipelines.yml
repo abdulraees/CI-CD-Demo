@@ -35,10 +35,11 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-- task: AzureWebApp@1
+- task: AzureRmWebAppDeployment@4
   inputs:
+    ConnectionType: 'AzureRM'
     azureSubscription: 'Visual Studio Professional with MSDN (4a2e82fd-cee9-4cc5-8a8b-18ed5dac5374)'
     appType: 'webApp'
-    appName: 'maheer'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'auto'
+    WebAppName: 'maheer'
+    VirtualApplication: 'test'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
